@@ -1,4 +1,4 @@
-package com.groupO.project2;
+package com.group14.project3;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +7,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-import com.groupO.project2.repository.itemRepo.Item;
-import com.groupO.project2.repository.itemRepo.ItemRepository;
-import com.groupO.project2.repository.userRepo.User;
-import com.groupO.project2.repository.userRepo.UserRepository;
+import com.group14.project3.repository.commentRepo.CommentRepo;
+import com.group14.project3.repository.commentRepo.Comment;
+import com.group14.project3.repository.postRepo.PostRepo;
+import com.group14.project3.repository.postRepo.Post;
+import com.group14.project3.repository.userRepo.UserRepo;
+import com.group14.project3.repository.userRepo.User;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 public class AccessingDataMongodbApplication implements CommandLineRunner {
 
   @Autowired
-  private UserRepository repository;
+  private UserRepo repository;
 
   @Autowired
 
@@ -29,8 +31,6 @@ public class AccessingDataMongodbApplication implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    //epository.deleteAll();
-	//repository.save(new User("test", "test", "test@gmail.com"));
-	//repository.save(new User("admin", "admin", "admin@gmail.com"));
+	repository.save(new User("test", "test"));
   }
 }
