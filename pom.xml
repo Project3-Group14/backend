@@ -11,11 +11,13 @@
 	<groupId>com.group14</groupId>
 	<artifactId>project3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>project3</name>
 	<description>Project 3 for CST:438</description>
 	<properties>
 			<start-class>com.group14.project3.AccessingDataMongodbApplication</start-class>
 			<java.version>11</java.version>
+			<maven.test.skip>true</maven.test.skip>
 	</properties>
 	<dependencies>
 	 <dependency>
