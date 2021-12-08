@@ -17,9 +17,28 @@ import org.springframework.stereotype.Service;
 import org.bson.types.ObjectId;
 
 public class CommentService {
+    private final CommentRepo commentRepo;
 
-    
+    @Autowired
+    public CommentService(CommentRepo commentRepo) {
+         this.commentRepo = commentRepo;
+    }
 
+    public Comment findByCommentComment(String comment) {
+        return commentRepo.findCommentByComment(comment);
+    }
+
+    public List<Comment> getComments() {
+        return commentRepo.findAll();
+    }
+
+    public Comment saveOrUpdateComment(Comment comment) {
+        return commentRepo.save(comment);
+    }
+
+    public void deleteComment(String id) {
+        commentRepo.deleteById(id);
+    }
 
 
 }
