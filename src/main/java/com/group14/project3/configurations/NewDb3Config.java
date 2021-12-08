@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
-@EnableMongoRepositories(basePackages = {"com.groupO.project2.repository.commentRepo"},
+@EnableMongoRepositories(basePackages = {"com.group14.project3.repository.commentRepo"},
 mongoTemplateRef = NewDb3Config.MONGO_TEMPLATE
 )
 public class NewDb3Config {

@@ -14,6 +14,7 @@
 	<name>project3</name>
 	<description>Project 3 for CST:438</description>
 	<properties>
+			<start-class>com.group14.project3.AccessingDataMongodbApplication</start-class>
 			<java.version>11</java.version>
 	</properties>
 	<dependencies>
