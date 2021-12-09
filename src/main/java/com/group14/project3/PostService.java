@@ -23,8 +23,8 @@ public class PostService {
         this.postRepo = postRepo;
     }
 
-    public Post findByPostTitle(String title) {
-        return postRepo.findByPostTitle(title);
+    public List<Post> findByPostTitle(String title) {
+        return postRepo.findAllByPostTitle(title);
     }
 
     public List<Post> findByUserId(String userId) {

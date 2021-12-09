@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 public interface PostRepo extends MongoRepository<Post, String>{
-	public Post findByPostTitle(String title);
+	public List<Post> findAllByPostTitle(String title);
 	public List<Post> findAllByUserId(String userId);
 	public Post findByPostId(String postId);
 }
