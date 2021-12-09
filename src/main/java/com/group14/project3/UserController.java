@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,6 +47,12 @@ public class UserController {
     public ResponseEntity<?> saveOrUpdateUser(@RequestBody User user) {
         userService.saveOrUpdateUser(ObjectMapperUtils.map(user, User.class));
         return new ResponseEntity("User added successfully", HttpStatus.OK);
+    }   
+
+    @PutMapping(value = "/update/{userId}")
+    public ResponseEntity<?> updateUser(@PathVariable("userId") String userId, @RequestBody User userInformation) {
+        userService.updateUser(ObjectMapperUtils.map(userService.findByUserId(userId), User.class), userInformation);
+        return new ResponseEntity("User updated successfully", HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/delete/{username}")
