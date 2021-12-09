@@ -27,8 +27,8 @@ public class UserService {
         return userRepo.findByUsername(username);
     }
 
-    public List<User> findByUserId(String userId) {
-        return userRepo.findAllByUserId(userId);
+    public User findByUserId(String userId) {
+        return userRepo.findByUserId(userId);
     }
 
     public List<User> getUsers() {

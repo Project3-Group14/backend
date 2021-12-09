@@ -32,8 +32,13 @@ public class PostController {
     }
 
     @GetMapping(value = "/title/{title}")
-    public Post getPostsByTitle(@PathVariable("title") String title) {
-        return ObjectMapperUtils.map(postService.findByPostTitle(title), Post.class);
+    public List<Post> getPostsByTitle(@PathVariable("title") String title) {
+        return ObjectMapperUtils.mapAll(postService.findByPostTitle(title), Post.class);
+    }
+
+    @GetMapping(value = "/postId/{postId}")
+    public Post getPostsByPostId(@PathVariable("postId") String postId) {
+        return ObjectMapperUtils.map(postService.findByPostId(postId), Post.class);
     }
 
     @GetMapping(value = "/userId/{userId}")
@@ -48,11 +53,10 @@ public class PostController {
         return new ResponseEntity("Post added successfully", HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/delete/{title}")
-    public ResponseEntity<?> deletePostByTitle(@PathVariable String title) {
-        postService.deletePost(postService.findByPostTitle(title).getPostId());
+    @DeleteMapping(value = "/delete/{postId}")
+    public ResponseEntity<?> deletePostByPostId(@PathVariable String postId) {
+        postService.deletePost(postService.findByPostId(postId).getPostId());
         return new ResponseEntity("Post deleted successfully", HttpStatus.OK);
     }
-    
 
 }

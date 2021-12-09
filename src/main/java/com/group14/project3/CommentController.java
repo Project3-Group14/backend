@@ -32,8 +32,8 @@ public class CommentController {
     }
 
     @GetMapping(value = "/comment/{content}")
-    public Comment getCommentsByTitle(@PathVariable("content") String content) {
-        return ObjectMapperUtils.map(commentService.findByCommentComment(content), Comment.class);
+    public List<Comment> getCommentsByTitle(@PathVariable("content") String content) {
+        return ObjectMapperUtils.mapAll(commentService.findByComment(content), Comment.class);
     }
 
     @GetMapping(value = "/userId/{userId}")
@@ -51,12 +51,11 @@ public class CommentController {
         commentService.saveOrUpdateComment(ObjectMapperUtils.map(content, Comment.class));
         return new ResponseEntity("Comment added successfully", HttpStatus.OK);
     }
-
-    @DeleteMapping(value = "/delete/{content}")
-    public ResponseEntity<?> deleteCommentByComment(@PathVariable String content) {
-        commentService.deleteComment(commentService.findByCommentComment(content).getCommentId());
+    
+    @DeleteMapping(value = "/delete/{commentId}")
+    public ResponseEntity<?> deleteCommentByCommentId(@PathVariable String commentId) {
+        commentService.deleteComment(commentService.findByCommentId(commentId).getCommentId());
         return new ResponseEntity("Comment deleted successfully", HttpStatus.OK);
     }
-    
 
 }

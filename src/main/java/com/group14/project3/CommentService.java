@@ -23,8 +23,8 @@ public class CommentService {
          this.commentRepo = commentRepo;
     }
 
-    public Comment findByCommentComment(String comment) {
-        return commentRepo.findCommentByComment(comment);
+    public List<Comment> findByComment(String comment) {
+        return commentRepo.findAllByComment(comment);
     }
 
     public List<Comment> findByUserId(String userId) {
@@ -33,6 +33,10 @@ public class CommentService {
 
     public List<Comment> findByPostId(String postId) {
         return commentRepo.findAllByPostId(postId);
+    }
+
+    public Comment findByCommentId(String commentId) {
+        return commentRepo.findByCommentId(commentId);
     }
 
     public List<Comment> getComments() {
