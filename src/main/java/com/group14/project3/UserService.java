@@ -39,6 +39,14 @@ public class UserService {
         return userRepo.save(user);
     }
 
+    public User updateUser(User user, User userInformation) {
+        user.setId(userInformation.getUserId());
+        user.setUsername(userInformation.getUsername());
+        user.setPassword(userInformation.getPassword());
+
+        return userRepo.save(user);
+    }
+
     public void deleteUser(String id) {
         userRepo.deleteById(id);
     }
