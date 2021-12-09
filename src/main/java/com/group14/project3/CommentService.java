@@ -27,6 +27,14 @@ public class CommentService {
         return commentRepo.findCommentByComment(comment);
     }
 
+    public List<Comment> findByUserId(String userId) {
+        return commentRepo.findAllByUserId(userId);
+    }
+
+    public List<Comment> findByPostId(String postId) {
+        return commentRepo.findAllByPostId(postId);
+    }
+
     public List<Comment> getComments() {
         return commentRepo.findAll();
     }

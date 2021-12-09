@@ -36,6 +36,16 @@ public class CommentController {
         return ObjectMapperUtils.map(commentService.findByCommentComment(content), Comment.class);
     }
 
+    @GetMapping(value = "/userId/{userId}")
+    public List<Comment> getCommentsByUserId(@PathVariable("userId") String userId) {
+        return ObjectMapperUtils.mapAll(commentService.findByUserId(userId), Comment.class);
+    }
+
+    @GetMapping(value = "/postId/{postId}")
+    public List<Comment> getCommentsByPostId(@PathVariable("postId") String postId) {
+        return ObjectMapperUtils.mapAll(commentService.findByPostId(postId), Comment.class);
+    }
+
     @PostMapping(value = "/save")
     public ResponseEntity<?> saveOrUpdateComment(@RequestBody Comment content) {
         commentService.saveOrUpdateComment(ObjectMapperUtils.map(content, Comment.class));
