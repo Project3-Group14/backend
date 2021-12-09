@@ -36,6 +36,12 @@ public class UserController {
         return ObjectMapperUtils.map(userService.findByUserUsername(username), User.class);
     }
 
+    @GetMapping(value = "/userId/{userId}")
+    public List<User> getCommentsByUserId(@PathVariable("userId") String userId) {
+        return ObjectMapperUtils.mapAll(userService.findByUserId(userId), User.class);
+    }
+
+
     @PostMapping(value = "/save")
     public ResponseEntity<?> saveOrUpdateUser(@RequestBody User user) {
         userService.saveOrUpdateUser(ObjectMapperUtils.map(user, User.class));

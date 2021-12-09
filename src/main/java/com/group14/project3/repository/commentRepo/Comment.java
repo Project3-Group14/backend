@@ -13,14 +13,16 @@ public class Comment {
 	
 	public String userId;
 	public String comment;
+	public String postId;
 	
 	public Comment() {}
 
-	public Comment(String commentId, String userId, String comment) {
+	public Comment(String commentId, String userId, String comment, String postId) {
 		super();
 		this.commentId = commentId;
 		this.userId = userId;
 		this.comment = comment;
+		this.postId = postId;
 	}
 
 	public String getCommentId() {
@@ -47,9 +49,17 @@ public class Comment {
 		this.comment = comment;
 	}
 
+	public String getPostId() {
+		return postId;
+	}
+
+	public void setPostId(String postId) {
+		this.postId = postId;
+	}
+
 	@Override
 	public String toString() {
-		return "Comment [commentId=" + commentId + ", userId=" + userId + ", comment=" + comment + "]";
+		return "Comment [commentId=" + commentId + ", userId=" + userId + ", comment=" + comment + ", postId=" + postId + "]";
 	}
 	
 }

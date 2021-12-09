@@ -36,6 +36,12 @@ public class PostController {
         return ObjectMapperUtils.map(postService.findByPostTitle(title), Post.class);
     }
 
+    @GetMapping(value = "/userId/{userId}")
+    public List<Post> getPostsByUserId(@PathVariable("userId") String userId) {
+        return ObjectMapperUtils.mapAll(postService.findByUserId(userId), Post.class);
+    }
+
+
     @PostMapping(value = "/save")
     public ResponseEntity<?> saveOrUpdatePost(@RequestBody Post post) {
         postService.saveOrUpdatePost(ObjectMapperUtils.map(post, Post.class));
