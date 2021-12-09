@@ -36,6 +36,11 @@ public class PostController {
         return ObjectMapperUtils.map(postService.findByPostTitle(title), Post.class);
     }
 
+    @GetMapping(value = "/postId/{postId}")
+    public Post getPostsByPostId(@PathVariable("postId") String postId) {
+        return ObjectMapperUtils.map(postService.findByPostId(postId), Post.class);
+    }
+
     @GetMapping(value = "/userId/{userId}")
     public List<Post> getPostsByUserId(@PathVariable("userId") String userId) {
         return ObjectMapperUtils.mapAll(postService.findByUserId(userId), Post.class);
@@ -53,6 +58,11 @@ public class PostController {
         postService.deletePost(postService.findByPostTitle(title).getPostId());
         return new ResponseEntity("Post deleted successfully", HttpStatus.OK);
     }
-    
+
+    @DeleteMapping(value = "/delete/{postId}")
+    public ResponseEntity<?> deletePostByPostId(@PathVariable String postId) {
+        postService.deletePost(postService.findByPostId(postId).getPostId());
+        return new ResponseEntity("Post deleted successfully", HttpStatus.OK);
+    }
 
 }

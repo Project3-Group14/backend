@@ -32,13 +32,13 @@ public class UserController {
     }
 
     @GetMapping(value = "/username/{username}")
-    public User getUsersById(@PathVariable("username") String username) {
+    public User getUsersByUsername(@PathVariable("username") String username) {
         return ObjectMapperUtils.map(userService.findByUserUsername(username), User.class);
     }
 
     @GetMapping(value = "/userId/{userId}")
-    public List<User> getCommentsByUserId(@PathVariable("userId") String userId) {
-        return ObjectMapperUtils.mapAll(userService.findByUserId(userId), User.class);
+    public User getUsersByUserId(@PathVariable("userId") String userId) {
+        return ObjectMapperUtils.map(userService.findByUserId(userId), User.class);
     }
 
 
@@ -54,5 +54,10 @@ public class UserController {
         return new ResponseEntity("User deleted successfully", HttpStatus.OK);
     }
     
+    @DeleteMapping(value = "/delete/{userId}")
+    public ResponseEntity<?> deleteUserByUserId(@PathVariable String userId) {
+        userService.deleteUser(userService.findByUserId(userId).getUserId());
+        return new ResponseEntity("User deleted successfully", HttpStatus.OK);
+    }
 
 }

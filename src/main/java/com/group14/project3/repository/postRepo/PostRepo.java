@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface PostRepo extends MongoRepository<Post, String>{
 	public Post findByPostTitle(String title);
 	public List<Post> findAllByUserId(String userId);
+	public Post findByPostId(String postId);
 }
