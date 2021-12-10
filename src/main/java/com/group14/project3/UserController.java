@@ -49,7 +49,7 @@ public class UserController {
         return new ResponseEntity("User added successfully", HttpStatus.OK);
     }   
 
-    @PutMapping(value = "/update/{userId}")
+    @PutMapping(value = "/update={userId}")
     public ResponseEntity<?> updateUser(@PathVariable("userId") String userId, @RequestBody User userInformation) {
         userService.updateUser(ObjectMapperUtils.map(userService.findByUserId(userId), User.class), userInformation);
         return new ResponseEntity("User updated successfully", HttpStatus.OK);
