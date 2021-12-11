@@ -13,3 +13,5 @@ Spring Boot -> Firebase
 
 ### Database ERD
 ![alt text](https://drive.google.com/uc?export=view&id=12iwr3urTxUZ4zHtLnfxzAff4v_9Hcynk)
+
+Video: (https://youtu.be/lsUbwVphFvI)
